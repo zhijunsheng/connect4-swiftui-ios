@@ -11,10 +11,13 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Grid()
-            .stroke(Color.red, lineWidth: 2)
+                .stroke(Color.red, lineWidth: 2)
             
             Triangle()
-            .stroke(Color.purple, lineWidth: 4)
+                .fill(Color.green)
+            
+            Triangle()
+                .stroke(Color.purple, lineWidth: 4)
         }
     }
 }
@@ -24,15 +27,15 @@ struct Grid: Shape {
         var path = Path()
         
         for row in 0..<4 {
-            path.move(to: CGPoint(x: 20, y: 30 + row * 20))
-            path.addLine(to: CGPoint(x: 140, y: 30 + row * 20))
+            path.move(to: CGPoint(x: 120, y: 200 + row * 20))
+            path.addLine(to: CGPoint(x: 240, y: 200 + row * 20))
         }
         
         // vertical
         
         for col in 0..<7 {
-            path.move(to: CGPoint(x: 20 + col * 20, y: 30))
-            path.addLine(to: CGPoint(x: 20 + col * 20, y: 30 + 3 * 20))
+            path.move(to: CGPoint(x: 120 + col * 20, y: 200))
+            path.addLine(to: CGPoint(x: 120 + col * 20, y: 200 + 3 * 20))
         }
         
         return path
