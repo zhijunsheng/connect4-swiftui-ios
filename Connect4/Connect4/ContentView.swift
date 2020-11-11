@@ -14,11 +14,24 @@ struct ContentView: View {
                 .stroke(Color.red, lineWidth: 2)
             
             Triangle()
-                .fill(Color.green)
+                .fill(Color.green.opacity(0.7))
             
             Triangle()
                 .stroke(Color.purple, lineWidth: 4)
+            
+            Cover()
+                .fill(Color.yellow.opacity(0.5))
         }
+    }
+}
+
+struct Cover: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+
+        path.addRect(CGRect(x: 0.25 * rect.width, y: 0.25 * rect.height, width: 0.5 * rect.width, height: 0.5 * rect.height))
+    
+        return path
     }
 }
 
