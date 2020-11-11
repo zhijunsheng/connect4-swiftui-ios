@@ -9,29 +9,47 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Path { path in
+        ZStack {
+            Grid()
+            .stroke(Color.red, lineWidth: 2)
             
-            // horizontal
-            
-            for row in 0..<4 {
-                path.move(to: CGPoint(x: 20, y: 30 + row * 20))
-                path.addLine(to: CGPoint(x: 140, y: 30 + row * 20))
-            }
-            
-            // vertical
-            
-            for col in 0..<7 {
-                path.move(to: CGPoint(x: 20 + col * 20, y: 30))
-                path.addLine(to: CGPoint(x: 20 + col * 20, y: 30 + 3 * 20))
-            }
-            
-            // triangle
-            path.move(to: CGPoint(x: 200, y: 200))
-            path.addLine(to: CGPoint(x: 300, y: 400))
-            path.addLine(to: CGPoint(x: 50, y: 400))
-            path.closeSubpath()
+            Triangle()
+            .stroke(Color.purple, lineWidth: 4)
         }
-        .stroke(Color.purple, lineWidth: 2)
+    }
+}
+
+struct Grid: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        for row in 0..<4 {
+            path.move(to: CGPoint(x: 20, y: 30 + row * 20))
+            path.addLine(to: CGPoint(x: 140, y: 30 + row * 20))
+        }
+        
+        // vertical
+        
+        for col in 0..<7 {
+            path.move(to: CGPoint(x: 20 + col * 20, y: 30))
+            path.addLine(to: CGPoint(x: 20 + col * 20, y: 30 + 3 * 20))
+        }
+        
+        return path
+    }
+}
+
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        // triangle
+        path.move(to: CGPoint(x: 200, y: 200))
+        path.addLine(to: CGPoint(x: 300, y: 400))
+        path.addLine(to: CGPoint(x: 50, y: 400))
+        path.closeSubpath()
+        
+        return path
     }
 }
 
