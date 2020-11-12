@@ -21,7 +21,24 @@ struct ContentView: View {
             
             Cover()
                 .fill(Color.yellow.opacity(0.5))
+            
+            Board()
+                .stroke(lineWidth: 2)
         }
+    }
+}
+
+struct Board: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        for i in 0..<4 {
+            path.move(to: CGPoint(x: 50 + i * 120 + 50, y: 50))
+            
+            path.addArc(center: CGPoint(x: 50 + i * 120, y: 50), radius: 50, startAngle: .radians(0), endAngle: .radians(2 * Double.pi), clockwise: false)
+        }
+
+        return path
     }
 }
 
