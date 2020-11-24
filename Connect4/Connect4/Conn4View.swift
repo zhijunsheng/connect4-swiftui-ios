@@ -25,6 +25,8 @@ struct Conn4View: View {
                     }
                 }
             }
+            .aspectRatio(7/6, contentMode: .fit)
+            .layoutPriority(100)
             
             Button("Reset") {
                 conn4VM.reset()
