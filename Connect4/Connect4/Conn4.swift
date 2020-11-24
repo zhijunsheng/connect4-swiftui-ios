@@ -40,11 +40,35 @@ struct Conn4 {
         case red
         case yellow
         
+        var isRed: Bool {
+            self == .red
+        }
     }
     
     struct Piece: Hashable {
         var col: Int
         var row: Int
         var player: Player
+    }
+}
+
+extension Conn4: CustomStringConvertible {
+    var description: String {
+        var desc = ""
+        
+        for i in 0..<6 {
+            desc += "\(5 - i)"
+            for col in 0..<7 {
+                if let piece = pieceAt(col: col, row: 5 - i) {
+                    desc += piece.player.isRed ? " r" : " y"
+                } else {
+                    desc += " ."
+                }
+            }
+            desc += "\n"
+        }
+        desc += "  0 1 2 3 4 5 6"
+        
+        return desc
     }
 }
