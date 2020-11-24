@@ -50,7 +50,7 @@ struct Conn4Cell: View {
                     Circle().fill(Color.yellow)
                 }
             }
-            Circle().stroke()
+            Circle().stroke(lineWidth: 3)
         }
     }
 }
