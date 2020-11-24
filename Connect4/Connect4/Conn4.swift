@@ -9,12 +9,17 @@ import Foundation
 
 struct Conn4 {
     private var piecesBox: Set<Piece> = []
-    private var whoseTurn: Player = .red
+    private(set) var whoseTurn: Player = .red
     
     mutating func dropAt(col: Int) {
         let numPiecesAtCol = numPieces(at: col)
         piecesBox.insert(Piece(col: col, row: numPiecesAtCol, player: whoseTurn))
         whoseTurn = whoseTurn == .red ? .yellow : .red
+    }
+    
+    mutating func reset() {
+        piecesBox.removeAll()
+        whoseTurn = .red
     }
     
     func pieceAt(col: Int, row: Int) -> Piece? {

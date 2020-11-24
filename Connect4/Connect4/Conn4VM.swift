@@ -10,6 +10,10 @@ import SwiftUI
 class Conn4VM: ObservableObject {
     @Published private var game = Conn4()
     
+    func reset() {
+        game.reset()
+    }
+    
     func pieceAt(col: Int, row: Int) -> Conn4.Piece? {
         game.pieceAt(col: col, row: row)
     }

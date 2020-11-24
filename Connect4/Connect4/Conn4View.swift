@@ -11,19 +11,27 @@ struct Conn4View: View {
     @ObservedObject var conn4VM: Conn4VM
     
     var body: some View {
-        HStack {
-            ForEach (0..<7) { col in
-                VStack {
-                    ForEach (0..<6) { i in
-                        Conn4Cell(piece: conn4VM.pieceAt(col: col, row: 5 - i))
+        VStack {
+            HStack {
+                ForEach (0..<7) { col in
+                    VStack {
+                        ForEach (0..<6) { i in
+                            Conn4Cell(piece: conn4VM.pieceAt(col: col, row: 5 - i))
+                        }
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        conn4VM.dropAt(col: col)
                     }
                 }
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    conn4VM.dropAt(col: col)
-                }
             }
+            
+            Button("Reset") {
+                conn4VM.reset()
+            }
+            .font(.largeTitle)
         }
+        
         .padding()
     }
 }

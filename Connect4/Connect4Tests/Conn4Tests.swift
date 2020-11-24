@@ -10,12 +10,23 @@ import XCTest
 
 class Conn4Tests: XCTestCase {
     
+    func testReset() {
+        var model = Conn4()
+        model.dropAt(col: 3)
+        model.dropAt(col: 3)
+        model.dropAt(col: 3)
+        XCTAssertNotNil(model.pieceAt(col: 3, row: 0))
+        
+        model.reset()
+        XCTAssertNil(model.pieceAt(col: 3, row: 0))
+        
+        XCTAssertEqual(.red, model.whoseTurn)
+    }
+    
     func testDropAt() {
         var model = Conn4()
-        print(model)
         model.dropAt(col: 3)
         model.dropAt(col: 3)
-        print(model)
         XCTAssertNotNil(model.pieceAt(col: 3, row: 0))
     }
 
