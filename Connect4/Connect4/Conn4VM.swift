@@ -7,8 +7,12 @@
 
 import SwiftUI
 
-class Conn4VM {
-    private var game = Conn4()
+class Conn4VM: ObservableObject {
+    @Published private var game = Conn4()
+    
+    func pieceAt(col: Int, row: Int) -> Conn4.Piece? {
+        game.pieceAt(col: col, row: row)
+    }
     
     func dropAt(col: Int) {
         game.dropAt(col: col)

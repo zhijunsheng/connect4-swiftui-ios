@@ -11,7 +11,8 @@ import SwiftUI
 struct Connect4App: App {
     var body: some Scene {
         WindowGroup {
-            Conn4View()
+            let conn4VM = Conn4VM()
+            Conn4View(conn4VM: conn4VM)
         }
     }
 }
