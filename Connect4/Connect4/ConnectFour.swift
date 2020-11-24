@@ -1,5 +1,5 @@
 //
-//  Conn4.swift
+//  ConnectFour.swift
 //  Connect4
 //
 //  Created by Golden Thumb on 2020-11-23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Conn4 {
+struct ConnectFour {
     private var piecesBox: Set<Piece> = []
     private(set) var whoseTurn: Player = .red
     
@@ -57,7 +57,7 @@ struct Conn4 {
     }
 }
 
-extension Conn4: CustomStringConvertible {
+extension ConnectFour: CustomStringConvertible {
     var description: String {
         var desc = ""
         

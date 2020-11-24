@@ -10,8 +10,10 @@ import XCTest
 
 class Conn4Tests: XCTestCase {
     
+    
+    
     func testReset() {
-        var model = Conn4()
+        var model = ConnectFour()
         model.dropAt(col: 3)
         model.dropAt(col: 3)
         model.dropAt(col: 3)
@@ -24,14 +26,14 @@ class Conn4Tests: XCTestCase {
     }
     
     func testDropAt() {
-        var model = Conn4()
+        var model = ConnectFour()
         model.dropAt(col: 3)
         model.dropAt(col: 3)
         XCTAssertNotNil(model.pieceAt(col: 3, row: 0))
     }
 
     func testDescription() {
-        let model = Conn4()
+        let model = ConnectFour()
         XCTAssertTrue(model.description.contains("2 . . . . . . ."))
     }
 

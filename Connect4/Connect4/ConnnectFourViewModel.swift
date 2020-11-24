@@ -1,5 +1,5 @@
 //
-//  Conn4VM.swift
+//  ConnnectFourViewModel.swift
 //  Connect4
 //
 //  Created by Golden Thumb on 2020-11-23.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-class Conn4VM: ObservableObject {
-    @Published private var game = Conn4()
+class ConnnectFourViewModel: ObservableObject {
+    @Published private var game = ConnectFour()
     
     func reset() {
         game.reset()
     }
     
-    func pieceAt(col: Int, row: Int) -> Conn4.Piece? {
+    func pieceAt(col: Int, row: Int) -> ConnectFour.Piece? {
         game.pieceAt(col: col, row: row)
     }
     

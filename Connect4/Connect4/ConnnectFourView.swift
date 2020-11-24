@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ConnnectFourView.swift
 //  Connect4
 //
 //  Created by Golden Thumb on 2020-11-10.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct Conn4View: View {
-    @ObservedObject var conn4VM: Conn4VM
+struct ConnnectFourView: View {
+    @ObservedObject var conn4VM: ConnnectFourViewModel
     
     var body: some View {
         VStack {
@@ -39,7 +39,7 @@ struct Conn4View: View {
 }
 
 struct Conn4Cell: View {
-    var piece: Conn4.Piece?
+    var piece: ConnectFour.Piece?
     
     var body: some View {
         ZStack {
@@ -57,6 +57,6 @@ struct Conn4Cell: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Conn4View(conn4VM: Conn4VM())
+        ConnnectFourView(conn4VM: ConnnectFourViewModel())
     }
 }
