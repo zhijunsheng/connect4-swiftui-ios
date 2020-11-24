@@ -14,6 +14,11 @@ struct ConnectFour {
     mutating func dropAt(col: Int) {
         let numPiecesAtCol = numPieces(at: col)
         piecesBox.insert(Piece(col: col, row: numPiecesAtCol, player: whoseTurn))
+        
+        if verticalCount(col: col, row: numPiecesAtCol, player: whoseTurn) == 4 {
+            print("game won by player: \(whoseTurn)")
+        }
+        
         whoseTurn = whoseTurn == .red ? .yellow : .red
     }
     
@@ -39,6 +44,16 @@ struct ConnectFour {
             }
         }
         return cnt
+    }
+    
+    func verticalCount(col: Int, row: Int, player: Player) -> Int {
+        if pieceAt(col: col, row: row)?.player != player {
+            return 0
+        }
+        if row == 0 {
+            return 1
+        }
+        return 1 + verticalCount(col: col, row: row - 1, player: player)
     }
     
     enum Player {
