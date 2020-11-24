@@ -8,10 +8,13 @@
 import Foundation
 
 struct Conn4 {
-    private var piecesBox: Set<Piece> = [Piece(col: 0, row: 0, player: .red), Piece(col: 0, row: 1, player: .yellow)]
+    private var piecesBox: Set<Piece> = []
+    private var whoseTurn: Player = .red
     
-    func dropAt(col: Int) {
-        
+    mutating func dropAt(col: Int) {
+        let numPiecesAtCol = numPieces(at: col)
+        piecesBox.insert(Piece(col: col, row: numPiecesAtCol, player: whoseTurn))
+        whoseTurn = whoseTurn == .red ? .yellow : .red
     }
     
     func pieceAt(col: Int, row: Int) -> Piece? {
@@ -23,9 +26,20 @@ struct Conn4 {
         return nil
     }
     
+    func numPieces(at col: Int) -> Int {
+        var cnt: Int = 0
+        for piece in piecesBox {
+            if piece.col == col {
+                cnt += 1
+            }
+        }
+        return cnt
+    }
+    
     enum Player {
         case red
         case yellow
+        
     }
     
     struct Piece: Hashable {

@@ -18,6 +18,10 @@ struct Conn4View: View {
                         Conn4Cell(piece: conn4VM.pieceAt(col: col, row: 5 - i))
                     }
                 }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    conn4VM.dropAt(col: col)
+                }
             }
         }
         .padding()
