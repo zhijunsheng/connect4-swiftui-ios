@@ -11,6 +11,8 @@ import MultipeerConnectivity
 class ConnnectFourViewModel: NSObject, ObservableObject {
     @Published private var game = ConnectFour()
     
+    let connectFourServiceType = "gt-conn4"
+    
     var peerId: MCPeerID
     var session: MCSession
     var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser?
@@ -23,13 +25,13 @@ class ConnnectFourViewModel: NSObject, ObservableObject {
     }
     
     func advertise() {
-        nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerId, discoveryInfo: nil, serviceType: "gt-conn4")
+        nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerId, discoveryInfo: nil, serviceType: connectFourServiceType)
         nearbyServiceAdvertiser?.delegate = self
         nearbyServiceAdvertiser?.startAdvertisingPeer()
     }
     
     func invite() {
-        let browser = MCBrowserViewController(serviceType: "gt-conn4", session: session)
+        let browser = MCBrowserViewController(serviceType: connectFourServiceType, session: session)
         browser.delegate = self
         UIApplication.shared.windows.first?.rootViewController?.present(browser , animated: true)
     }
