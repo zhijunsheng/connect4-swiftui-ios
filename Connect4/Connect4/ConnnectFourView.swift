@@ -32,6 +32,16 @@ struct ConnnectFourView: View {
                 conn4VM.reset()
             }
             .font(.largeTitle)
+            
+            Button("Advertise") {
+                conn4VM.advertise()
+            }
+            .font(.largeTitle)
+            
+            Button("Invite") {
+                conn4VM.invite()
+            }
+            .font(.largeTitle)
         }
         
         .padding()
