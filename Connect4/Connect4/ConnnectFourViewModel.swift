@@ -46,6 +46,11 @@ class ConnnectFourViewModel: NSObject, ObservableObject {
     
     func dropAt(col: Int) {
         game.dropAt(col: col)
+        
+        let colStr = "\(col)"
+        if let colData = colStr.data(using: .utf8) {
+            try? session.send(colData, toPeers: session.connectedPeers, with: .reliable)
+        }
     }
 }
 
@@ -61,12 +66,14 @@ extension ConnnectFourViewModel: MCSessionDelegate {
         @unknown default:
             print("\(peerId) state: unknown")
         }
-        
-        
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        
+        if let colStr = String(data: data, encoding: .utf8), let col = Int(colStr) {
+            DispatchQueue.main.async {
+                self.game.dropAt(col: col)
+            }
+        }
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
