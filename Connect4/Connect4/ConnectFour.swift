@@ -16,7 +16,9 @@ struct ConnectFour {
         piecesBox.insert(Piece(col: col, row: numPiecesAtCol, player: whoseTurn))
         
         if verticalCount(col: col, row: numPiecesAtCol, player: whoseTurn) == 4 {
-            print("game won by player: \(whoseTurn)")
+            print("game won vertically by player: \(whoseTurn)")
+        } else if leftCount(col: col, row: numPiecesAtCol, player: whoseTurn) + rightCount(col: col, row: numPiecesAtCol, player: whoseTurn) - 1 == 4 {
+            print("game won horizontally by player: \(whoseTurn)")
         }
         
         whoseTurn = whoseTurn == .red ? .yellow : .red
@@ -44,6 +46,26 @@ struct ConnectFour {
             }
         }
         return cnt
+    }
+    
+    func leftCount(col: Int, row: Int, player: Player) -> Int {
+        if pieceAt(col: col, row: row)?.player != player {
+            return 0
+        }
+        if col == 0 {
+            return 1
+        }
+        return 1 + leftCount(col: col - 1, row: row, player: player)
+    }
+    
+    func rightCount(col: Int, row: Int, player: Player) -> Int {
+        if pieceAt(col: col, row: row)?.player != player {
+            return 0
+        }
+        if col == 6 {
+            return 1
+        }
+        return 1 + rightCount(col: col + 1, row: row, player: player)
     }
     
     func verticalCount(col: Int, row: Int, player: Player) -> Int {
