@@ -21,7 +21,7 @@ struct ConnnectFourView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        conn4VM.dropAt(col: col)
+                        conn4VM.dropAndSend(at: col)
                     }
                 }
             }

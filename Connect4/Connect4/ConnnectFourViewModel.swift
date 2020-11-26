@@ -47,14 +47,17 @@ class ConnnectFourViewModel: NSObject, ObservableObject {
         game.pieceAt(col: col, row: row)
     }
     
-    func dropAt(col: Int) {
-        game.dropAt(col: col)
+    func dropAndSend(at col: Int) {
+        dropWithSound(at: col)
         
         let colStr = "\(col)"
         if let colData = colStr.data(using: .utf8) {
             try? session.send(colData, toPeers: session.connectedPeers, with: .reliable)
         }
-        
+    }
+    
+    private func dropWithSound(at col: Int) {
+        game.dropAt(col: col)
         droppingSound = AVPlayer(url: Bundle.main.url(forResource: "drop", withExtension: "wav")!)
         droppingSound.play()
     }
@@ -77,7 +80,7 @@ extension ConnnectFourViewModel: MCSessionDelegate {
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         if let colStr = String(data: data, encoding: .utf8), let col = Int(colStr) {
             DispatchQueue.main.async {
-                self.game.dropAt(col: col)
+                self.dropWithSound(at: col)
             }
         }
     }
