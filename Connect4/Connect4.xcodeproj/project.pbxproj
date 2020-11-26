@@ -10,6 +10,7 @@
 		0705932D256CA18200D59D97 /* ConnectFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705932C256CA18200D59D97 /* ConnectFour.swift */; };
 		07059330256CA33600D59D97 /* ConnnectFourViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705932F256CA33600D59D97 /* ConnnectFourViewModel.swift */; };
 		07059357256CBD9500D59D97 /* Conn4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07059356256CBD9500D59D97 /* Conn4Tests.swift */; };
+		07284E74256FF7260098E0B0 /* drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07284E73256FF7260098E0B0 /* drop.wav */; };
 		07D37085255B9E5900E435B2 /* Connect4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D37084255B9E5900E435B2 /* Connect4App.swift */; };
 		07D37087255B9E5900E435B2 /* ConnnectFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D37086255B9E5900E435B2 /* ConnnectFourView.swift */; };
 		07D37089255B9E5900E435B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D37088255B9E5900E435B2 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		07059348256CBD7400D59D97 /* Connect4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Connect4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0705934C256CBD7400D59D97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07059356256CBD9500D59D97 /* Conn4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conn4Tests.swift; sourceTree = "<group>"; };
+		07284E73256FF7260098E0B0 /* drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drop.wav; sourceTree = "<group>"; };
 		07D37081255B9E5900E435B2 /* Connect4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Connect4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D37084255B9E5900E435B2 /* Connect4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect4App.swift; sourceTree = "<group>"; };
 		07D37086255B9E5900E435B2 /* ConnnectFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnnectFourView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				0705932C256CA18200D59D97 /* ConnectFour.swift */,
 				07D37086255B9E5900E435B2 /* ConnnectFourView.swift */,
 				0705932F256CA33600D59D97 /* ConnnectFourViewModel.swift */,
+				07284E73256FF7260098E0B0 /* drop.wav */,
 				07D37088255B9E5900E435B2 /* Assets.xcassets */,
 				07D3708D255B9E5900E435B2 /* Info.plist */,
 				07D3708A255B9E5900E435B2 /* Preview Content */,
@@ -195,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07284E74256FF7260098E0B0 /* drop.wav in Resources */,
 				07D3708C255B9E5900E435B2 /* Preview Assets.xcassets in Resources */,
 				07D37089255B9E5900E435B2 /* Assets.xcassets in Resources */,
 			);

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MultipeerConnectivity
+import AVFoundation
 
 class ConnnectFourViewModel: NSObject, ObservableObject {
     @Published private var game = ConnectFour()
@@ -16,6 +17,8 @@ class ConnnectFourViewModel: NSObject, ObservableObject {
     var peerId: MCPeerID
     var session: MCSession
     var nearbyServiceAdvertiser: MCNearbyServiceAdvertiser?
+    
+    var droppingSound: AVPlayer!
     
     override init() {
         peerId = MCPeerID(displayName: UIDevice.current.name)
@@ -51,6 +54,9 @@ class ConnnectFourViewModel: NSObject, ObservableObject {
         if let colData = colStr.data(using: .utf8) {
             try? session.send(colData, toPeers: session.connectedPeers, with: .reliable)
         }
+        
+        droppingSound = AVPlayer(url: Bundle.main.url(forResource: "drop", withExtension: "wav")!)
+        droppingSound.play()
     }
 }
 
