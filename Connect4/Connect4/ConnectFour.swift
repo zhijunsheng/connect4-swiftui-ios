@@ -19,6 +19,10 @@ struct ConnectFour {
             print("game won vertically by player: \(whoseTurn)")
         } else if leftCount(col: col, row: numPiecesAtCol, player: whoseTurn) + rightCount(col: col, row: numPiecesAtCol, player: whoseTurn) - 1 == 4 {
             print("game won horizontally by player: \(whoseTurn)")
+        } else if leftCountBL2TR(col: col, row: numPiecesAtCol, player: whoseTurn) + rightCountBL2TR(col: col, row: numPiecesAtCol, player: whoseTurn) - 1 == 4 {
+            print("game won diagonally BL-TR by player: \(whoseTurn)")
+        } else if leftCountTL2BR(col: col, row: numPiecesAtCol, player: whoseTurn) + rightCountTL2BR(col: col, row: numPiecesAtCol, player: whoseTurn) - 1 == 4 {
+            print("game won diagonally TL-BR by player: \(whoseTurn)")
         }
         
         whoseTurn = whoseTurn == .red ? .yellow : .red
@@ -46,6 +50,52 @@ struct ConnectFour {
             }
         }
         return cnt
+    }
+    
+    /*
+     bottom left to top right
+     */
+    func leftCountBL2TR(col: Int, row: Int, player: Player) -> Int {
+        if pieceAt(col: col, row: row)?.player != player {
+            return 0
+        }
+        if col == 0 || row == 0 {
+            return 1
+        }
+        return 1 + leftCountBL2TR(col: col - 1, row: row - 1, player: player)
+    }
+    
+    func rightCountBL2TR(col: Int, row: Int, player: Player) -> Int {
+        if pieceAt(col: col, row: row)?.player != player {
+            return 0
+        }
+        if col == 6 || row == 5 {
+            return 1
+        }
+        return 1 + rightCountBL2TR(col: col + 1, row: row + 1, player: player)
+    }
+    
+    /*
+     top left to bottom right
+     */
+    func leftCountTL2BR(col: Int, row: Int, player: Player) -> Int {
+        if pieceAt(col: col, row: row)?.player != player {
+            return 0
+        }
+        if col == 0 || row == 5 {
+            return 1
+        }
+        return 1 + leftCountTL2BR(col: col - 1, row: row + 1, player: player)
+    }
+    
+    func rightCountTL2BR(col: Int, row: Int, player: Player) -> Int {
+        if pieceAt(col: col, row: row)?.player != player {
+            return 0
+        }
+        if col == 6 || row == 0 {
+            return 1
+        }
+        return 1 + rightCountTL2BR(col: col + 1, row: row - 1, player: player)
     }
     
     func leftCount(col: Int, row: Int, player: Player) -> Int {
